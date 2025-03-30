@@ -4,7 +4,7 @@ Setting up the development of research quadcopter.
 Step of Configuring the Laptop
 
 1. Installing Ubuntu 22.04
-- Check the python version that already installed on Ubuntu 22.04, On terminal
+Check the python version that already installed on Ubuntu 22.04, On terminal
 ```javascript
 python3 --version
 whereis python3
@@ -13,7 +13,7 @@ whereis python3
 (whereis python3, must reply that the python3 on /usr/bin/python3)
 
 2. Install the VSCode
-- For VSCode installation on Linux, follow the step like this
+For VSCode installation on Linux, follow the step like this
 ```javascript
 sudo apt install ./<file>.deb
 # If you're on an older Linux distribution, you will need to run this instead:
@@ -39,11 +39,11 @@ sudo apt install code # or code-insiders
 ```javascript
 code .
 ```
-- Install python add-on on Vscode, after complete, access it on View >> Terminal
-- Check the Intreperter on bottom right corner, you can select the python version for interpreter
+Install python add-on on Vscode, after complete, access it on View >> Terminal
+Check the Intreperter on bottom right corner, you can select the python version for interpreter
 
 3. Install ROS2 Humble
-- Installation of ROS2 Humble, follow this step
+Installation of ROS2 Humble, follow this step
 ```javascript
 locale  # check for UTF-8
 sudo apt update && sudo apt install locales
@@ -62,24 +62,24 @@ sudo apt install ros-humble-desktop
 sudo apt install ros-humble-ros-base
 sudo apt install ros-dev-tools
 ```
-- Trying the installation is success, try to source (if source cannot do, maybe the python3 is not on machine or not in /usr/bin/python3)
+Trying the installation is success, try to source (if source cannot do, maybe the python3 is not on machine or not in /usr/bin/python3)
 ```javascript
 source /opt/ros/humble/setup.bash
 ```
-- Try some example
+Try some example
 ```javascript
 source /opt/ros/humble/setup.bash
 ros2 run demo_nodes_cpp talker
 ```
-- Open new terminal, filled with
+Open new terminal, filled with
 ```javascript
 source /opt/ros/humble/setup.bash
 ros2 run demo_nodes_py listener
 ```
-- Ctrl+D for ended the simulation
+Ctrl+D for ended the simulation
 
 4. Install the Miniconda
-- Installation of miniconda, follow this step
+Installation of miniconda, follow this step
 ```javascript
 mkdir -p ~/miniconda3
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda3/miniconda.sh
@@ -88,27 +88,63 @@ rm ~/miniconda3/miniconda.sh
 source ~/miniconda3/bin/activate
 conda init --all
 ```
-- After this installation, the terminal fisrt name is (base), it is the initial source environment, Check the environment that already we have
+After this installation, the terminal fisrt name is (base), it is the initial source environment, Check the environment that already we have
 ```javascript
 conda env list
 ```
-- When you check the version of python on base environment, it reply thet the version is 3.12.9 (it is from the miniconda)
-- Create new virtual environment with python version is 3.10.12 with name my_devQuad
+When you check the version of python on base environment, it reply thet the version is 3.12.9 (it is from the miniconda)
+Create new virtual environment with python version is 3.10.12 with name my_devQuad
 ```javascript
 conda create --name my_devQuad python=3.10.12
 ```
-- Activate the venv my_devQuad
+Activate the venv my_devQuad
 ```javascript
 conda activate my_devQuad
 ```
-- Deactivate the venv
+When you want Deactivate the venv
 ```javascript
 conda deactivate my_devQuad
 ```
-- We use this virtual environment to programming and testing the Quadcopter, try to source on venv my_devQuad
+We use this virtual environment to programming and testing the Quadcopter, try to source on venv my_devQuad
 ```javascript
 source /opt/ros/humble/setup.bash
 ```
 when it  reply nothing, the source of ros2 is succeed
 
 5. Clone the PX4-Autopilot Repository
+clone the repository PX4-Autopilot with version v1.14 (using the venv my_devQuad). 
+```javascript
+mkdir -p Dev_myQuad
+cd Dev_myQuad
+git clone -b v1.14.3 https://github.com/PX4/PX4-Autopilot.git --recursive
+bash ./PX4-Autopilot/Tools/setup/ubuntu.sh
+cd PX4-Autopilot
+make px4_sitl gz_x500
+```
+Ctrl+c from terminal for closing the simulation
+When the simulation start, it running the pixhawk on gazebo (it define with client)
+if the gazebo cannot open, do distclean
+```javascript
+git submodule update --recursive
+make distclean
+```
+
+6. Clone the Agent repository
+Clone the Micro-XRCE-DDS-Agent for later used in Raspberry Pi 
+```javascript
+git clone https://github.com/eProsima/Micro-XRCE-DDS-Agent.git
+cd Micro-XRCE-DDS-Agent
+mkdir build
+cd build
+cmake ..
+make
+sudo make install
+sudo ldconfig /usr/local/lib/
+```
+Starting the client and then the agent, if the connection of two is succeeded. The ros2 topic can be look by:
+```javascript
+ros2 topic list
+```
+
+7. Install the Client / Ground Control (QGroundcontrol)
+
