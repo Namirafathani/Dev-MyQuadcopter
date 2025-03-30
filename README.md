@@ -37,5 +37,40 @@ sudo apt install code # or code-insiders
 ```
 
 3. Install ROS2 Humble
+- Installation of ROS2 Humble, follow this step
+```javascript
+locale  # check for UTF-8
+sudo apt update && sudo apt install locales
+sudo locale-gen en_US en_US.UTF-8
+sudo update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
+export LANG=en_US.UTF-8
+locale  # verify settings
+sudo apt install software-properties-common
+sudo add-apt-repository universe
+sudo apt update && sudo apt install curl -y
+sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(. /etc/os-release && echo $UBUNTU_CODENAME) main" | sudo tee /etc/apt/sources.list.d/ros2.list > /dev/null
+sudo apt update
+sudo apt upgrade
+sudo apt install ros-humble-desktop
+sudo apt install ros-humble-ros-base
+sudo apt install ros-dev-tools
+```
+- Trying the installation is success, try to source (if source cannot do, maybe the python3 is not on machine or not in /usr/bin/python3)
+```javascript
+source /opt/ros/humble/setup.bash
+```
+- Try some example
+```javascript
+source /opt/ros/humble/setup.bash
+ros2 run demo_nodes_cpp talker
+```
+- Open new terminal, filled with
+```javascript
+source /opt/ros/humble/setup.bash
+ros2 run demo_nodes_py listener
+```
+- Ctrl+D for ended the simulation
+
 4. Install the Miniconda
 5. Clone the PX4-Autopilot Repository
