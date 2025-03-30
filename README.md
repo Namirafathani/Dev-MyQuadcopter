@@ -35,6 +35,12 @@ sudo apt install apt-transport-https
 sudo apt update
 sudo apt install code # or code-insiders
 ```
+- for opening the visual studio code, from terminal
+```javascript
+code .
+```
+- Install python add-on on Vscode, after complete, access it on View >> Terminal
+- Check the Intreperter on bottom right corner, you can select the python version for interpreter
 
 3. Install ROS2 Humble
 - Installation of ROS2 Humble, follow this step
@@ -73,4 +79,36 @@ ros2 run demo_nodes_py listener
 - Ctrl+D for ended the simulation
 
 4. Install the Miniconda
+- Installation of miniconda, follow this step
+```javascript
+mkdir -p ~/miniconda3
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda3/miniconda.sh
+bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3
+rm ~/miniconda3/miniconda.sh
+source ~/miniconda3/bin/activate
+conda init --all
+```
+- After this installation, the terminal fisrt name is (base), it is the initial source environment, Check the environment that already we have
+```javascript
+conda env list
+```
+- When you check the version of python on base environment, it reply thet the version is 3.12.9 (it is from the miniconda)
+- Create new virtual environment with python version is 3.10.12 with name my_devQuad
+```javascript
+conda create --name my_devQuad python=3.10.12
+```
+- Activate the venv my_devQuad
+```javascript
+conda activate my_devQuad
+```
+- Deactivate the venv
+```javascript
+conda deactivate my_devQuad
+```
+- We use this virtual environment to programming and testing the Quadcopter, try to source on venv my_devQuad
+```javascript
+source /opt/ros/humble/setup.bash
+```
+when it  reply nothing, the source of ros2 is succeed
+
 5. Clone the PX4-Autopilot Repository
