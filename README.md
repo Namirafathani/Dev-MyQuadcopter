@@ -128,6 +128,11 @@ if the gazebo cannot open, do distclean
 git submodule update --recursive
 make distclean
 ```
+If you still have the error, and the terminal says that "AttributeError": module 'em' has no attribute 'RAW_OPT'. It says that your em module, need another version. Uninstall it and install again with the version that PX4 accepted. Try with this:
+```javascript
+pip uninstall em
+pip install empy==3.3.4
+```
 
 6. Clone the Agent repository
 Clone the Micro-XRCE-DDS-Agent for later used in Raspberry Pi 
