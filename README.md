@@ -1,7 +1,6 @@
 # Dev-MyQuadcopter
 
-# Create the world of simulation add with aruco
-# Adding the model pickup to the simulation
+Documentation for Create the world of simulation add with aruco + Adding the model pickup to the simulation
 Caution: This is only for PX4-Autopilot v1.14. The other version may have another difference. 
 
 Basically, You can actually running the simulation with open the PX4-Autopilot, and run this on the terminal
