@@ -33,3 +33,4 @@ PX4_SIM_MODEL=${PX4_SIM_MODEL:=x500}
 ```
 change the `default` to `aruco`.
 its define the worlds that must execute is the aruco file.
+If you want to get another worlds, it can be downloaded through this [here](https://github.com/PX4/PX4-gazebo-models.git)
