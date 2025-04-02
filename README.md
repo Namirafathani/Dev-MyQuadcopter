@@ -14,7 +14,7 @@ and the model file on path (PX4-Autopilot/Tools/simulation/gz/models)
 
 Adding the aruco.sdf, on your world path. Also download the dependencies of the arucotag such png file, model.config and  model.sdf.
 Put it down itu one file names aruco. Place it on the worlds file path
-``shell
+```shell
 worlds<br/>
    aruco<br/>
       arucotag.png
