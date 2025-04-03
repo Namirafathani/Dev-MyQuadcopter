@@ -49,3 +49,4 @@ Because, the file that you already edited is in 4001_gz_x500
 
 3. When you want to make the other command on terminal, like `make px4_sitl gz_x500_mono_cam_down` you have to define it on the CmakeList.txt on path (PX4-Autopilot/ROMFS/px4fmu_common/init.d-posix/airframes)
 and you have to create a new file on the path (PX4-Autopilot/ROMFS/px4fmu_common/init.d-posix/airframes)
+![Add the command make px4_sitl gz_x500_mono_cam_down](Adding the gz_x500_mono_cam_down.png)
