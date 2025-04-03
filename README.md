@@ -11,7 +11,7 @@ This command run the default.sdf world file and the quadcopter x500 model file.
 You can find the world file on path (PX4-Autopilot/Tools/simulation/gz/worlds)
 and the model file on path (PX4-Autopilot/Tools/simulation/gz/models)
 
-Adding the aruco.sdf, on your world path. Also download the dependencies of the arucotag such png file, model.config and  model.sdf.
+1. Adding the aruco.sdf, on your world path. Also download the dependencies of the arucotag such png file, model.config and  model.sdf.
 Put it down itu one file names aruco. Place it on the worlds file path
 ```shell
 worlds<br/>
@@ -28,9 +28,19 @@ The parameter file access on path (PX4-Autopilot/ROMFS/px4fmu_common/init.d-posi
 The default is define in line 11.
 ```javascript
 PX4_SIMULATOR=${PX4_SIMULATOR:=gz}
-PX4_GZ_WORLD=${PX4_GZ_WORLD:=default}
+PX4_GZ_WORLD=${PX4_GZ_WORLD:=aruco}
 PX4_SIM_MODEL=${PX4_SIM_MODEL:=x500}
 ```
 change the `default` to `aruco`.
 its define the worlds that must execute is the aruco file.
 If you want to get another worlds, it can be downloaded through this [here](https://github.com/PX4/PX4-gazebo-models.git)
+
+2. Use the camera monocular on x500 quadcopter (down facing)
+This model has a simple monocular camera sensor attached facing down (caution: there is no physical camera visualization on the model itself, no meshes or thumbnail image)
+adding to the models to your path PX4-Autopilot (PX4-Autopilot/Tools/simulation/gz/models)
+Edit the file again on (PX4-Autopilot/ROMFS/px4fmu_common/init.d-posix/airframes/4001_gz_x500)
+```javascript
+PX4_SIMULATOR=${PX4_SIMULATOR:=gz}
+PX4_GZ_WORLD=${PX4_GZ_WORLD:=aruco}
+PX4_SIM_MODEL=${PX4_SIM_MODEL:=x500_mono_cam_down}
+```
