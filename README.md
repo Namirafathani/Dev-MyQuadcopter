@@ -27,4 +27,4 @@ MicroXRCEAgent udp4 -p 8888
 ```shell
 ros2 run px4_ros_com offboard_control
 ```
-![Screencastfrom04-08-2025111006AM-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/6d036386-f2b7-4906-a2c8-c873e44edeb6)
+
