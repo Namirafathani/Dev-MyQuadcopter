@@ -28,3 +28,7 @@ MicroXRCEAgent udp4 -p 8888
 ros2 run px4_ros_com offboard_control
 ```
 ![Simulation Offboard Control](Screencastfrom04-08-2025111006AM-ezgif.com-video-to-gif-converter.gif)
+
+This command, execute the px4_ros_com package, and offboard_control from src/examples/offboard/offboard_control.cpp
+
+#
