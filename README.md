@@ -55,7 +55,7 @@ Add to the cmakelist
 ```shell
 # Install Python scripts
 install(PROGRAMS
-  scripts/my_python_node.py
+  src/examples/offboard_py/offboard_control.py
   DESTINATION lib/${PROJECT_NAME}
   RENAME py_offboard
 )
